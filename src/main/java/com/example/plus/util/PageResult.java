@@ -38,14 +38,10 @@ public class PageResult {
      * @return 分页详情(不含数据)
      */
     public PageResult PageResult(PageInfo pageInfo) {
-
         PageResult pageResult = new PageResult();
         pageResult.setCurrent(pageInfo.getPageNum());
         pageResult.setPageSize(pageInfo.getPageSize());
         pageResult.setTotal(pageInfo.getTotal());
         return pageResult;
-
     }
-
-
 }
