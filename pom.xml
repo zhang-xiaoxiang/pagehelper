@@ -60,17 +60,22 @@
         </dependency>
 
         <!--*****下面是mybatis plus重要依赖*****-->
+        <dependency>
+            <groupId>org.mybatis.spring.boot</groupId>
+            <artifactId>mybatis-spring-boot-starter</artifactId>
+            <version>2.0.1</version>
+        </dependency>
         <!--mybatis-plus依赖-->
         <dependency>
             <groupId>com.baomidou</groupId>
             <artifactId>mybatis-plus-boot-starter</artifactId>
-            <version>3.1.2</version>
+            <version>3.1.1</version>
         </dependency>
         <!--添加代码生成器依赖-->
         <dependency>
             <groupId>com.baomidou</groupId>
             <artifactId>mybatis-plus-generator</artifactId>
-            <version>3.1.2</version>
+            <version>3.1.1</version>
         </dependency>
 
         <!-- SpringBoot整合分页查询 -->

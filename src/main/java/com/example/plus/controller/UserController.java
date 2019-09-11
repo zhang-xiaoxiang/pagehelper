@@ -1,13 +1,14 @@
 package com.example.plus.controller;
 
 
-import com.example.plus.entity.User;
+
+import com.example.plus.page.ReceiveData;
+import com.example.plus.page.ResultDataVO;
+import com.example.plus.page.UserForm;
 import com.example.plus.service.UserService;
-import org.apache.ibatis.annotations.Param;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
-import org.springframework.stereotype.Controller;
 
 /**
  * <p>
@@ -30,11 +31,24 @@ public class UserController {
     // }
 
 
-    //REST风格
-    @GetMapping("/get/{userid}")
+    /**
+     * REST风格
+     *
+     * @param userid
+     * @return
+     */
+    @GetMapping("/info/{userid}")
     public Object getUser(@PathVariable("userid") String userid) {
         System.out.println("这种直接在接口传参数 ");
         return userService.getUser(userid);
     }
+
+    @GetMapping("/page/user")
+    public Object getUserPage(@RequestBody ReceiveData<UserForm> receiveData) {
+        ResultDataVO resultDataVO= userService.getUserPage(receiveData);
+        return null;
+
+    }
+
 
 }

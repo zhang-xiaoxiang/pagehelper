@@ -24,7 +24,7 @@ public class MpPlusApplication {
         SpringApplication.run(MpPlusApplication.class, args);
         log.info("mybatis-plus 入门,官方文档");
         System.out.println("https://mp.baomidou.com/");
-        System.out.println("http://localhost:8080/user/get/1559727297780946311");
+        System.out.println("http://localhost:8080/user/info/1559727297780946311");
     }
 
 }
