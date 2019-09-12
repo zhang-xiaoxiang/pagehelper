@@ -4,8 +4,13 @@
     <!--需要些多表联查在这里写XML,一般的单表操作CRUD,分页等自带的方法就完全满足-->
     <select id="selectUserList" resultType="com.example.plus.entity.User"
             parameterType="com.example.plus.page.UserForm">
-select * from user
-<if test="userSite!=null and userSite!=''"></if>
+        select * from user where 1=1
+        <if test="userName!=null and userName!=''">
+            and (user_name LIKE CONCAT('%','${userName}','%' )
+            or user_phone LIKE CONCAT('%','${userName}','%' ))
+
+        </if>
+
 
     </select>
 </mapper>

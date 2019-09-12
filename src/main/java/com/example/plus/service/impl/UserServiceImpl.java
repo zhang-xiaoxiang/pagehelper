@@ -28,6 +28,8 @@ import java.util.Map;
 public class UserServiceImpl extends ServiceImpl<UserDao, User> implements UserService {
     @Autowired
     private UserDao userDao;
+    @Autowired
+    private ResultDataVO resultDataVO;
 
     /**
      * 根据用户ID查询用户详情
@@ -57,7 +59,6 @@ public class UserServiceImpl extends ServiceImpl<UserDao, User> implements UserS
         List<User> userList = userDao.selectUserList(receiveData.getDate());
         //
         PageInfo<User> pageInfo = new PageInfo<>(userList);
-        // return resultDataVO.getResultDataVO(pageInfo);
-        return null;
+         return resultDataVO.getResultDataVO(pageInfo);
     }
 }

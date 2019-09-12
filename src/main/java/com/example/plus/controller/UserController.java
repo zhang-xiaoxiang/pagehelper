@@ -46,7 +46,7 @@ public class UserController {
     @GetMapping("/page/user")
     public Object getUserPage(@RequestBody ReceiveData<UserForm> receiveData) {
         ResultDataVO resultDataVO= userService.getUserPage(receiveData);
-        return null;
+        return resultDataVO;
 
     }
 
