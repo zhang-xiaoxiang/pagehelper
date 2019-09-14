@@ -5,12 +5,9 @@ import lombok.Data;
 import org.springframework.stereotype.Component;
 
 /**
- * <p>
- * 返回分页实体类(分页详情)
- * </p>
- *
- * @author jc
- * @since 2019-06-04
+ * PageDetails:返回分页的规格(比如查询了多少条)
+ * @author zhangxiaoxiang
+ * @date 2019/9/15
  */
 @Component
 @Data
@@ -30,10 +27,9 @@ public class PageDetails {
     private Long total;
 
     /**
-     * 获取返回数据
-     *
-     * @param pageInfo 需要PageInfo的对象
-     * @return 分页详情
+     * 插件分页执行的结果
+     * @param pageInfo
+     * @return
      */
     public PageDetails getPageDetails(PageInfo pageInfo) {
         PageDetails pageDetails = new PageDetails();
@@ -41,7 +37,6 @@ public class PageDetails {
         pageDetails.setPageSize(pageInfo.getPageSize());
         pageDetails.setTotal(pageInfo.getTotal());
         return pageDetails;
-
     }
 
 }

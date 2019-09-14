@@ -3,7 +3,7 @@ package com.example.plus.page;
 import lombok.Data;
 
 /**
- * PageNavigation:默认分页大小
+ * PageNavigation:请求分页的规格,不传默认给个值比较科学
  * @author zhangxiaoxiang
  * @date 2019/6/12
  */

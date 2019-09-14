@@ -6,12 +6,10 @@ import lombok.Data;
 import org.springframework.stereotype.Component;
 
 /**
- * <p>
- * 返回分页实体和查询结果数据实体类--完整分页结果集(给前端解析的)
- * </p>
+ * PageResponse :返回分页的所有相关信息和数据
  *
- * @author jc
- * @since 2019-06-04
+ * @author zhangxiaoxiang
+ * @date 2019/9/15
  */
 @Component
 @Data
@@ -27,13 +25,12 @@ public class PageResponse<T> {
     private T pageDataList;
 
     /**
-     *
      * @param pageInfo
      * @return 完整分页结果集(给前端解析的)
      */
-    public PageResponse getResultDataVO(PageInfo pageInfo){
-        PageResponse pageResponse =new PageResponse();
-        PageDetails pageDetails =new PageDetails();
+    public PageResponse getResultDataVO(PageInfo pageInfo) {
+        PageResponse pageResponse = new PageResponse();
+        PageDetails pageDetails = new PageDetails();
         pageDetails.setPageNum(pageInfo.getPageNum());
         pageDetails.setPageSize(pageInfo.getPageSize());
         pageDetails.setTotal(pageInfo.getTotal());

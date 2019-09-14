@@ -3,7 +3,7 @@ package com.example.plus.page;
 import lombok.Data;
 
 /**
- * PageRequest:接收组装参数查询
+ * PageRequest:封装前端完整的分页请求
  *
  * @author zhangxiaoxiang
  * @date 2019/6/12

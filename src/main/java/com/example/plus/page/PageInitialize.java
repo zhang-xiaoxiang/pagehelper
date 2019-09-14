@@ -9,7 +9,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 /**
- * PageInitialize:分页初始化,解析分页需求
+ * PageInitialize:请求分页初始化,解析分页需求
  *
  * @author zhangxiaoxiang
  * @date: 2019/09/15
