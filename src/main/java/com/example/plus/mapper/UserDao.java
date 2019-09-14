@@ -2,7 +2,7 @@ package com.example.plus.mapper;
 
 import com.example.plus.entity.User;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
-import com.example.plus.page.UserForm;
+import com.example.plus.page.PageCondition;
 
 import java.util.List;
 
@@ -15,6 +15,6 @@ import java.util.List;
  * @since 2019-07-04
  */
 public interface UserDao extends BaseMapper<User> {
-    List<User> selectUserList(UserForm date);
+    List<User> selectUserList(PageCondition date);
 //这里面有丰富的查询方法,自定义的也可以写在这里
 }

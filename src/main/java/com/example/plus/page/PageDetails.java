@@ -14,18 +14,18 @@ import org.springframework.stereotype.Component;
  */
 @Component
 @Data
-public class PageVO {
+public class PageDetails {
     /**
      * 当前页
      */
-    private Integer current;
+    private Integer pageNum;
 
     /**
-     * 每页记录数
+     * 每页的数量
      */
-    private Integer size;
+    private Integer pageSize;
     /**
-     * 总记录数
+     * 数据库查询出来的总记录数
      */
     private Long total;
 
@@ -35,13 +35,12 @@ public class PageVO {
      * @param pageInfo 需要PageInfo的对象
      * @return 分页详情
      */
-    public PageVO getPageVO(PageInfo pageInfo) {
-
-        PageVO pageVO = new PageVO();
-        pageVO.setCurrent(pageInfo.getPageNum());
-        pageVO.setSize(pageInfo.getPageSize());
-        pageVO.setTotal(pageInfo.getTotal());
-        return pageVO;
+    public PageDetails getPageDetails(PageInfo pageInfo) {
+        PageDetails pageDetails = new PageDetails();
+        pageDetails.setPageNum(pageInfo.getPageNum());
+        pageDetails.setPageSize(pageInfo.getPageSize());
+        pageDetails.setTotal(pageInfo.getTotal());
+        return pageDetails;
 
     }
 

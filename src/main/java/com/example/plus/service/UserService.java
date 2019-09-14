@@ -2,13 +2,8 @@ package com.example.plus.service;
 
 import com.example.plus.entity.User;
 import com.baomidou.mybatisplus.extension.service.IService;
-import com.example.plus.mapper.UserDao;
-import com.example.plus.page.ReceiveData;
-import com.example.plus.page.ResultDataVO;
-import com.example.plus.page.UserForm;
-import org.springframework.beans.factory.annotation.Autowired;
-
-import java.util.List;
+import com.example.plus.page.PageRequest;
+import com.example.plus.page.PageResponse;
 
 /**
  * <p>
@@ -28,8 +23,8 @@ public interface UserService extends IService<User> {
 
     /**
      * 查询用户分页
-     * @param receiveData
+     * @param pageRequest
      * @return
      */
-    ResultDataVO getUserPage(ReceiveData<UserForm> receiveData);
+    PageResponse getUserPage(PageRequest pageRequest);
 }

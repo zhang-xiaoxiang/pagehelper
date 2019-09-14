@@ -1,13 +1,19 @@
 package com.example.plus.controller;
 
 
-
-import com.example.plus.page.ReceiveData;
-import com.example.plus.page.ResultDataVO;
-import com.example.plus.page.UserForm;
+import com.alibaba.fastjson.JSON;
+import com.alibaba.fastjson.JSONObject;
+import com.example.plus.page.PageCondition;
+import com.example.plus.page.PageRequest;
+import com.example.plus.page.PageResponse;
 import com.example.plus.service.UserService;
+import com.example.plus.util.PageInitializeUtil;
+import com.example.plus.util.Result;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.HashMap;
+import java.util.Map;
 
 
 /**
@@ -23,6 +29,8 @@ import org.springframework.web.bind.annotation.*;
 public class UserController {
     @Autowired
     private UserService userService;
+    @Autowired
+    private PageCondition pageCondition;
 
     // @RequestMapping("/get")
     // public Object getUser(@RequestBody User user){
@@ -44,9 +52,19 @@ public class UserController {
     }
 
     @GetMapping("/page/user")
-    public Object getUserPage(@RequestBody ReceiveData<UserForm> receiveData) {
-        ResultDataVO resultDataVO= userService.getUserPage(receiveData);
-        return resultDataVO;
+    public Result getUserPage(@RequestBody PageRequest pageRequest) {
+        System.out.println("查询条件===>" + pageRequest.getPageCondition());
+        /**
+         * 分页请求还原json格式
+         */
+        PageCondition condition = PageInitializeUtil.getPageInitializeUtil(pageRequest.getPageCondition());
+        System.out.println("查询条件json===>" + condition);
+        PageResponse pageResponse = userService.getUserPage(pageRequest);
+        Result result = new Result();
+        result.setCode(200);
+        result.setMsg("查询用户信心成功!");
+        result.setData(pageResponse);
+        return result;
 
     }
 

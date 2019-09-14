@@ -3,9 +3,8 @@ package com.example.plus.service.impl;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.example.plus.entity.User;
 import com.example.plus.mapper.UserDao;
-import com.example.plus.page.ReceiveData;
-import com.example.plus.page.ResultDataVO;
-import com.example.plus.page.UserForm;
+import com.example.plus.page.PageRequest;
+import com.example.plus.page.PageResponse;
 import com.example.plus.service.UserService;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
@@ -29,7 +28,7 @@ public class UserServiceImpl extends ServiceImpl<UserDao, User> implements UserS
     @Autowired
     private UserDao userDao;
     @Autowired
-    private ResultDataVO resultDataVO;
+    private PageResponse pageResponse;
 
     /**
      * 根据用户ID查询用户详情
@@ -49,16 +48,16 @@ public class UserServiceImpl extends ServiceImpl<UserDao, User> implements UserS
     /**
      * 查询用户分页
      *
-     * @param receiveData
+     * @param pageRequest
      * @return
      */
     @Override
-    public ResultDataVO getUserPage(ReceiveData<UserForm> receiveData) {
-        PageHelper.startPage(receiveData.getPageForm().getCurrent(), receiveData.getPageForm().getSize());
+    public PageResponse getUserPage(PageRequest pageRequest) {
+        PageHelper.startPage(pageRequest.getPageNavigation().getPageNum(), pageRequest.getPageNavigation().getPageSize());
         //返回结果可以是多表联查的结果UserDto(最简单就是单表的)
-        List<User> userList = userDao.selectUserList(receiveData.getDate());
+        List<User> userList = userDao.selectUserList(pageRequest.getPageCondition());
         //
         PageInfo<User> pageInfo = new PageInfo<>(userList);
-         return resultDataVO.getResultDataVO(pageInfo);
+         return pageResponse.getResultDataVO(pageInfo);
     }
 }

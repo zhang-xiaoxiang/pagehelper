@@ -3,23 +3,23 @@ package com.example.plus.page;
 import lombok.Data;
 
 /**
- * ReceiveData:接收组装参数查询
+ * PageRequest:接收组装参数查询
  *
  * @author zhangxiaoxiang
  * @date 2019/6/12
  */
 @Data
-public class ReceiveData<T> {
+public class PageRequest {
     /**
      * 分页需求
      */
-    private PageForm pageForm;
+    private PageNavigation pageNavigation;
     /**
      *接收的具体对象
      */
-    private T date;
+    private PageCondition pageCondition;
 
-    private String userId;
+
 
 
 }

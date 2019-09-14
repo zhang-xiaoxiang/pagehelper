@@ -4,13 +4,13 @@ import lombok.Data;
 
 
 /**
- * ResultVO:http 请求返回的最外层对象(用spring 使用注解将其转为json传输)
+ * Result:http 请求返回的最外层对象(用spring 使用注解将其转为json传输)
  *
  * @author zhangxiaoxiang
  * @date: 2019/05/23
  */
 @Data
-public class ResultVO<T>{
+public class Result<T>{
     /**
      * 错误码
      */
