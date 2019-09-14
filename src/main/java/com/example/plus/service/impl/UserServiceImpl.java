@@ -37,10 +37,10 @@ public class UserServiceImpl extends ServiceImpl<UserDao, User> implements UserS
      * @return
      */
     @Override
-    public User getUser( String id) {
-        Map<String,Object> map=new HashMap<>();
-        map.put("user_id",id);
-       User user= userDao.selectById(id);
+    public User getUser(String id) {
+        Map<String, Object> map = new HashMap<>();
+        map.put("user_id", id);
+        User user = userDao.selectById(id);
         System.out.println(user);
         return user;
     }
@@ -53,11 +53,21 @@ public class UserServiceImpl extends ServiceImpl<UserDao, User> implements UserS
      */
     @Override
     public PageResponse getUserPage(PageRequest pageRequest) {
+        /**
+         * 分页辅助类,起始页和每页大小
+         */
         PageHelper.startPage(pageRequest.getPageNavigation().getPageNum(), pageRequest.getPageNavigation().getPageSize());
-        //返回结果可以是多表联查的结果UserDto(最简单就是单表的)
+        /**
+         * 返回结果可以是多表联查的结果UserDto(最简单就是单表的),根据条件去数据库查询
+         */
         List<User> userList = userDao.selectUserList(pageRequest.getPageCondition());
-        //
+        /**
+         * 把数据库查询出来的给插件分页
+         */
         PageInfo<User> pageInfo = new PageInfo<>(userList);
-         return pageResponse.getResultDataVO(pageInfo);
+        /**
+         * 返回分页后的数据
+         */
+        return pageResponse.getResultDataVO(pageInfo);
     }
 }

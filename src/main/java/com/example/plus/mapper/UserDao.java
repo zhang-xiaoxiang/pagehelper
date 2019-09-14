@@ -15,6 +15,12 @@ import java.util.List;
  * @since 2019-07-04
  */
 public interface UserDao extends BaseMapper<User> {
-    List<User> selectUserList(PageCondition date);
+    /**
+     * 分页条件查询数据库
+     *
+     * @param pageCondition
+     * @return
+     */
+    List<User> selectUserList(PageCondition pageCondition);
 //这里面有丰富的查询方法,自定义的也可以写在这里
 }

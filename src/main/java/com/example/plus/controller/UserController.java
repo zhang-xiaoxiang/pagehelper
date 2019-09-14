@@ -7,6 +7,7 @@ import com.example.plus.page.PageResponse;
 import com.example.plus.service.UserService;
 import com.example.plus.page.PageInitialize;
 import com.example.plus.util.Result;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -21,6 +22,7 @@ import org.springframework.web.bind.annotation.*;
  */
 @RestController
 @RequestMapping("/user")
+@Slf4j
 public class UserController {
     @Autowired
     private UserService userService;
@@ -46,14 +48,14 @@ public class UserController {
         return userService.getUser(userid);
     }
 
-    @GetMapping("/page/user")
+
+    @GetMapping("/page/test")
     public Result getUserPage(@RequestBody PageRequest pageRequest) {
-        System.out.println("查询条件===>" + pageRequest.getPageCondition());
         /**
-         * 分页请求还原json格式
+         * 分页请求还原json格式(@RequestBody把json转成了java对象,所以为了需要就还原一下)
          */
         PageCondition condition = PageInitialize.getPageInitializeUtil(pageRequest.getPageCondition());
-        System.out.println("查询条件json===>" + condition);
+        log.info("查询条件condition===>" + condition);
         PageResponse pageResponse = userService.getUserPage(pageRequest);
         Result result = new Result();
         result.setCode(200);
