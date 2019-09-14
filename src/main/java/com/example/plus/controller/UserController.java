@@ -1,19 +1,14 @@
 package com.example.plus.controller;
 
 
-import com.alibaba.fastjson.JSON;
-import com.alibaba.fastjson.JSONObject;
 import com.example.plus.page.PageCondition;
 import com.example.plus.page.PageRequest;
 import com.example.plus.page.PageResponse;
 import com.example.plus.service.UserService;
-import com.example.plus.util.PageInitializeUtil;
+import com.example.plus.page.PageInitialize;
 import com.example.plus.util.Result;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
-
-import java.util.HashMap;
-import java.util.Map;
 
 
 /**
@@ -57,7 +52,7 @@ public class UserController {
         /**
          * 分页请求还原json格式
          */
-        PageCondition condition = PageInitializeUtil.getPageInitializeUtil(pageRequest.getPageCondition());
+        PageCondition condition = PageInitialize.getPageInitializeUtil(pageRequest.getPageCondition());
         System.out.println("查询条件json===>" + condition);
         PageResponse pageResponse = userService.getUserPage(pageRequest);
         Result result = new Result();

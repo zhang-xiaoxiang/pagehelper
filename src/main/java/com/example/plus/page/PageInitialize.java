@@ -1,21 +1,20 @@
-package com.example.plus.util;
+package com.example.plus.page;
 
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;
-import com.example.plus.page.PageCondition;
 import lombok.Data;
 
 import java.util.HashMap;
 import java.util.Map;
 
 /**
- * PageInitializeUtil:
+ * PageInitialize:
  *
  * @author zhangxiaoxiang
  * @date: 2019/09/15
  */
 @Data
-public class PageInitializeUtil {
+public class PageInitialize {
     public static PageCondition getPageInitializeUtil(PageCondition pageCondition){
         String pageConditionStr = JSON.toJSONString(pageCondition);
         Map<String, Object> map = new HashMap<>();
