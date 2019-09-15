@@ -17,4 +17,6 @@ public class PageCondition {
      * 分页条件直接获取前端的json转换成map,所有业务的条件都可以使用它(查询用户,订单,粉丝...各种条件的map集合)
      */
     private Map<String,Object> map;
+
+
 }

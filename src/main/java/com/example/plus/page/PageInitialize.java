@@ -19,11 +19,11 @@ import java.util.Map;
 public class PageInitialize {
     /**
      * 分页初始化
+     *
      * @param pageCondition
      * @return
      */
     public static PageCondition getPageInitializeUtil(PageCondition pageCondition) {
-
         try {
             String pageConditionStr = JSON.toJSONString(pageCondition);
             Map<String, Object> map = new HashMap<>();
@@ -33,10 +33,11 @@ public class PageInitialize {
                 map.put(entry.getKey(), entry.getValue());
             }
             pageCondition.setMap(map);
+
             return pageCondition;
 
         } catch (Exception e) {
-           log.error("分页初始化错误,请检查参数"+e.getMessage());
+            log.error("分页初始化错误,请检查参数" + e.getMessage());
             return null;
         }
 

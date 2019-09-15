@@ -3,6 +3,7 @@ package com.example.plus.service.impl;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.example.plus.entity.User;
 import com.example.plus.mapper.UserDao;
+import com.example.plus.page.PageNavigation;
 import com.example.plus.page.PageRequest;
 import com.example.plus.page.PageResponse;
 import com.example.plus.service.UserService;
@@ -14,6 +15,7 @@ import org.springframework.stereotype.Service;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Optional;
 
 /**
  * <p>
@@ -56,10 +58,12 @@ public class UserServiceImpl extends ServiceImpl<UserDao, User> implements UserS
         /**
          * 分页辅助类,起始页和每页大小
          */
+
         PageHelper.startPage(pageRequest.getPageNavigation().getPageNum(), pageRequest.getPageNavigation().getPageSize());
         /**
          * 返回结果可以是多表联查的结果UserDto(最简单就是单表的),根据条件去数据库查询
          */
+        System.out.println("=====C查数据库"+pageRequest.getPageCondition().getMap());
         List<User> userList = userDao.selectUserList(pageRequest.getPageCondition());
         /**
          * 把数据库查询出来的给插件分页
